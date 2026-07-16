@@ -6,7 +6,7 @@ const courseSchema = new mongoose.Schema(
     description: { type: String },
     instructorId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: "Instructor",
       required: true,
     },
     maxStudents: { type: Number, required: true, min: 1 },
