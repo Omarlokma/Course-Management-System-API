@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const studentRoutes = require("./routes/student.routes.js")
 
+const PORT = process.env.PORT || 3000;
 dotenv.config();
 const connectDB = require("./config/db");
 
@@ -16,7 +17,7 @@ app.get("/", (req, res) => {
 app.use("/students", studentRoutes);
 
 
-app.listen(process.env.PORT, () => {
-    console.log(`Server running on port ${process.env.PORT}`);
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
 
