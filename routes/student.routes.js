@@ -1,13 +1,20 @@
-const express = require("express");
-const {
+import express from "express";
+import {
   createStudent,
   getAllStudents,
   getStudentById,
   updateStudent,
   deleteStudent,
-} = require("../controllers/student.controller.js");
+} from "../controllers/student.controller.js";
+import {
+  validateCreateStudent,
+  validateUpdateStudent,
+} from "../validations/studentValidation.js";
 
 const router = express.Router();
+
+router.post("/", validateCreateStudent, createStudent);
+router.put("/:id", validateUpdateStudent, updateStudent);
 
 router.route("/").post(createStudent).get(getAllStudents);
 router
@@ -16,4 +23,4 @@ router
   .patch(updateStudent)
   .delete(deleteStudent);
 
-module.exports = router;
+export default router;
