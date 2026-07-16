@@ -1,4 +1,5 @@
 import Instructor from "../models/instructor.model.js"
+import bcrypt from "bcrypt";
 
 export const createInstructor = async (req, res) => {
   try {
@@ -64,6 +65,9 @@ export const getInstructor = async (req, res) => {
 
 export const updateInstructor = async (req, res) => {
   try {
+    if (req.body.password) {
+  req.body.password = await bcrypt.hash(req.body.password, 10);
+    }
     const instructor = await Instructor.findByIdAndUpdate(
       req.params.id,
       req.body,
