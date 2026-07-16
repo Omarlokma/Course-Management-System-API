@@ -6,7 +6,7 @@ import {
   getInstructor,
   updateInstructor,
   deleteInstructor,
-} from "../controllers/instructor.controller";
+} from "../controllers/instructor.controller.js";
 
 const router = express.Router();
 
@@ -18,4 +18,4 @@ router
   .patch(updateInstructor)
   .delete(deleteInstructor);
 
-module.exports = router;
+export default router;

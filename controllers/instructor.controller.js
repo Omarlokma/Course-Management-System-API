@@ -1,6 +1,6 @@
-const Instructor = require("../models/instructor.model.js");
+import Instructor = from"../models/instructor.model.js";
 
-exports.createInstructor = async (req, res) => {
+export const createInstructor = async (req, res) => {
   try {
     const instructor = await Instructor.create(req.body);
 
@@ -18,7 +18,7 @@ exports.createInstructor = async (req, res) => {
   }
 };
 
-exports.getAllInstructors = async (req, res) => {
+export const getAllInstructors = async (req, res) => {
   try {
     const instructors = await Instructor.find({});
 
@@ -37,7 +37,7 @@ exports.getAllInstructors = async (req, res) => {
   }
 };
 
-exports.getInstructor = async (req, res) => {
+export const getInstructor = async (req, res) => {
   try {
     const instructor = await Instructor.findById(req.params.id);
 
@@ -62,7 +62,7 @@ exports.getInstructor = async (req, res) => {
   }
 };
 
-exports.updateInstructor = async (req, res) => {
+export const updateInstructor = async (req, res) => {
   try {
     const instructor = await Instructor.findByIdAndUpdate(
       req.params.id,
@@ -94,7 +94,7 @@ exports.updateInstructor = async (req, res) => {
   }
 };
 
-exports.deleteInstructor = async (req, res) => {
+export const deleteInstructor = async (req, res) => {
   try {
     const instructor = await Instructor.findByIdAndDelete(req.params.id);
 
