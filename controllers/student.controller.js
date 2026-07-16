@@ -111,6 +111,10 @@ const Student = require("../models/student.model.js")
     }
 };
 
+
+
+
+
 module.exports = {
     createStudent,
   getAllStudents,
