@@ -1,8 +1,8 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-const courseController = require("../controllers/course.controller");
+import * as courseController from "../controllers/course.controller.js";
 
-router.post("/", validateCourse, courseController.createCourse);
+// router.post("/", validateCourse, courseController.createCourse);
 router.get("/", courseController.getAllCourses);
 router.get("/:id", courseController.getCourseById);
 router.put("/:id", courseController.updateCourse);
