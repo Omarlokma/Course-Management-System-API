@@ -1,7 +1,7 @@
-const Student = require("../models/student.model.js")
+import Student from "../models/student.model.js"
 
 
- const createStudent = async (req, res) => {
+ export const createStudent = async (req, res) => {
     try {
     const student = await Student.create(req.body)
     res.status(201).json({
@@ -18,7 +18,7 @@ const Student = require("../models/student.model.js")
 
 
 
- const getAllStudents = async (req, res) => {
+  export const getAllStudents = async (req, res) => {
     try {
         const students = await Student.find({});
 
@@ -36,7 +36,7 @@ const Student = require("../models/student.model.js")
 
 
 
- const getStudentById = async (req, res) => {
+ export const getStudentById = async (req, res) => {
     try {
         const { id } = req.params;
 
@@ -62,7 +62,7 @@ const Student = require("../models/student.model.js")
 
 
 
- const updateStudent = async (req, res) => {
+export const updateStudent = async (req, res) => {
     try {
         const { id } = req.params;
 
@@ -91,7 +91,7 @@ const Student = require("../models/student.model.js")
 
 
 
- const deleteStudent = async (req, res) => {
+export const deleteStudent = async (req, res) => {
     try {
         const { id } = req.params;
         const student = await Student.findByIdAndDelete(id);
@@ -115,10 +115,3 @@ const Student = require("../models/student.model.js")
 
 
 
-module.exports = {
-    createStudent,
-  getAllStudents,
-  getStudentById,
-  updateStudent,
-  deleteStudent,
-}
