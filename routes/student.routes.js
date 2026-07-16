@@ -1,4 +1,5 @@
 import express from "express";
+
 import {
   createStudent,
   getAllStudents,
@@ -6,6 +7,7 @@ import {
   updateStudent,
   deleteStudent,
 } from "../controllers/student.controller.js";
+
 import {
   validateCreateStudent,
   validateUpdateStudent,
@@ -13,14 +15,15 @@ import {
 
 const router = express.Router();
 
-router.post("/", validateCreateStudent, createStudent);
-router.put("/:id", validateUpdateStudent, updateStudent);
+router
+  .route("/")
+  .post(validateCreateStudent, createStudent)
+  .get(getAllStudents);
 
-router.route("/").post(createStudent).get(getAllStudents);
 router
   .route("/:id")
   .get(getStudentById)
-  .patch(updateStudent)
+  .patch(validateUpdateStudent, updateStudent)
   .delete(deleteStudent);
 
 export default router;

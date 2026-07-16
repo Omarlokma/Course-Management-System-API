@@ -8,14 +8,22 @@ import {
   deleteInstructor,
 } from "../controllers/instructor.controller.js";
 
+import {
+  validateCreateInstructor,
+  validateUpdateInstructor,
+} from "../validations/instructorValidation.js";
+
 const router = express.Router();
 
-router.route("/").post(createInstructor).get(getAllInstructors);
+router
+  .route("/")
+  .post(validateCreateInstructor, createInstructor)
+  .get(getAllInstructors);
 
 router
   .route("/:id")
   .get(getInstructor)
-  .patch(updateInstructor)
+  .patch(validateUpdateInstructor, updateInstructor)
   .delete(deleteInstructor);
 
 export default router;
